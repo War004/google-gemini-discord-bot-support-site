@@ -429,7 +429,7 @@ const OfflineHostingView = () => {
         borderRadius: theme.shape.borderRadius / 2,
         fontFamily: 'monospace',
     }));
-    
+
     // A styled component for code blocks
     const CodeBlock = styled(Paper)(({ theme }) => ({
         padding: theme.spacing(1.5),
@@ -455,11 +455,14 @@ const OfflineHostingView = () => {
                     <Typography>
                         You will find a file named <CodeSpan>.env</CodeSpan>. Open it in a text editor and add your values for the <CodeSpan>GOOGLE_API_KEY</CodeSpan> and <CodeSpan>DISCORD_TOKEN</CodeSpan>.
                     </Typography>
+                    <Alert severity="info" variant="outlined" icon={false}>
+                        <strong>Optional:</strong> If you don't add your application ID, the bot will attempt to get it automatically.
+                    </Alert>
                     <Alert severity="warning" variant="outlined" icon={false}>
                         <strong>Important:</strong> Do not use single or double quotes around your keys.
                     </Alert>
                     <CodeBlock>
-                        {`# Example .env file content\nGOOGLE_API_KEY=your_google_api_key_goes_here\nDISCORD_TOKEN=your_discord_bot_token_goes_here`}
+                        {`# Example .env file content\nGOOGLE_API_KEY=your_google_api_key_goes_here\nDISCORD_TOKEN=your_discord_bot_token_goes_here\n\n# Optional\nAPPLICATION_ID=your_application_id_goes_here`}
                     </CodeBlock>
                 </Stack>
             )
@@ -472,10 +475,10 @@ const OfflineHostingView = () => {
             label: 'Create and Activate Virtual Environment',
             description: () => (
                 <Stack spacing={1}>
-                     <Typography>First, create a dedicated virtual environment to keep dependencies isolated:</Typography>
-                     <CodeBlock>python -m venv apiKeys</CodeBlock>
-                     <Typography>Then, activate the environment. The command differs slightly by OS:</Typography>
-                     <CodeBlock>{`# On Windows:\n.\\apiKeys\\Scripts\\activate\n\n# On macOS/Linux:\nsource apiKeys/bin/activate`}</CodeBlock>
+                       <Typography>First, create a dedicated virtual environment to keep dependencies isolated:</Typography>
+                       <CodeBlock>python -m venv apiKeys</CodeBlock>
+                       <Typography>Then, activate the environment. The command differs slightly by OS:</Typography>
+                       <CodeBlock>{`# On Windows:\n.\\apiKeys\\Scripts\\activate\n\n# On macOS/Linux:\nsource apiKeys/bin/activate`}</CodeBlock>
                 </Stack>
             )
         },
@@ -492,11 +495,11 @@ const OfflineHostingView = () => {
             label: 'Run the Bot',
             description: () => (
                 <Stack spacing={1}>
-                     <Typography>Everything is now set up! Start the bot with the final command:</Typography>
-                     <CodeBlock>python public_version.py</CodeBlock>
-                     <Alert severity="success" variant="outlined">
-                        Congratulations! Your self-hosted bot should now be online and connected to Discord.
-                     </Alert>
+                       <Typography>Everything is now set up! Start the bot with the final command:</Typography>
+                       <CodeBlock>python public_version.py</CodeBlock>
+                       <Alert severity="success" variant="outlined">
+                            Congratulations! Your self-hosted bot should now be online and connected to Discord.
+                       </Alert>
                 </Stack>
             )
         }
@@ -505,8 +508,8 @@ const OfflineHostingView = () => {
     return (
         <ViewContainer icon={<StorageIcon color="primary" sx={{ fontSize: 36 }} />} title="Offline Hosting">
              <Typography variant="body1" color="text.secondary" sx={{ pl: 1, mb: 2 }}>
-                Follow these steps to get a self-hosted version of the bot running on your own machine for maximum privacy and control.
-            </Typography>
+                  Follow these steps to get a self-hosted version of the bot running on your own machine for maximum privacy and control.
+             </Typography>
             <Stepper orientation="vertical" activeStep={-1}>
                 {steps.map((step, index) => (
                     <Step key={step.label} expanded>
