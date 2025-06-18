@@ -202,26 +202,38 @@ const HomeView = () => (
             />
             <CardContent sx={{ pt: 1,  "&:last-child": { pb: 2 } }}>
                 <Stack spacing={2}>
-                     <Alert severity="info" variant="standard">
-                        <Typography fontWeight="bold">Afternoon Server Shutdown to Prevent Overheating</Typography>
+                    <Alert severity="info" variant="standard">
+                        <Typography fontWeight="bold">📢 Bot Offline Announcement</Typography>
                         
-                        {/* --- THIS IS THE NEWLY ADDED DATE --- */}
+                        {/* --- THIS IS THE UPDATED DATE --- */}
                         <Typography variant="caption" color="text.secondary" sx={{ mb: 1 }}>
-                            Posted on: June 15, 2025
+                            Posted on: June 18, 2025
                         </Typography>
-                        {/* ----------------------------------- */}
+                        {/* -------------------------------- */}
 
                         <Typography variant="body2" component="div">
-                            <strong>Daily Bot Downtime Schedule</strong>
                             <p>
-                                To ensure service stability and prevent hardware damage from high afternoon heat, the bot will be offline during the following hours every day, effective immediately.
+                                Hello everyone,
                             </p>
-                            <ul style={{ paddingLeft: '20px', margin: '10px 0' }}>
-                                <li><strong>Downtime Begins:</strong> 1:30 PM IST (Daily)</li>
-                                <li><strong>Expected Return:</strong> 5:00 PM - 6:00 PM IST (Daily)</li>
-                            </ul>
                             <p>
-                                This schedule will remain in effect until temperatures consistently decrease. Thank you for your understanding.
+                                Please be aware that the bot will be going offline starting <strong>immediately</strong> and will remain offline until <strong>June 23rd</strong>.
+                            </p>
+                            <p>
+                                The reason for this downtime is that I will be away and do not want to leave my laptop running unsupervised for an extended period.
+                            </p>
+                            <p>
+                                For those who would like to continue using the bot's functionalities, you can self-host it by following the instructions available on our support site or GitHub repository.
+                            </p>
+                            <Stack spacing={0.5} sx={{ my: 2, pl: '20px' }}>
+                                <Typography>
+                                    <strong>Support Site:</strong> <a href="https://war004.github.io/google-gemini-discord-bot-support-site/" target="_blank" rel="noopener noreferrer">war004.github.io/...</a>
+                                </Typography>
+                                <Typography>
+                                    <strong>GitHub Repo:</strong> <a href="https://github.com/War004/Google-gemini-discord-bot" target="_blank" rel="noopener noreferrer">github.com/War004/...</a>
+                                </Typography>
+                            </Stack>
+                            <p>
+                                Thank you for your understanding. The bot will be back online as soon as I return.
                             </p>
                         </Typography>
                     </Alert>
