@@ -128,7 +128,7 @@ const HomeView = () => (
             />
             <CardContent>
                 <Typography variant="body1" color="text.secondary">
-                    Welcome to Mana Nagase, your versatile AI companion for Discord, powered by Google's state-of-the-art Gemini models. Go beyond simple chatbots with a toolkit designed for advanced [...]
+                    Welcome to Mana Nagase, your versatile AI companion for Discord, powered by Google's state-of-the-art Gemini models. Go beyond simple chatbots with a toolkit designed for advanced roleplaying, powerful image generation, multi-modal analysis, and complete user control.
                 </Typography>
             </CardContent>
         </Card>
@@ -144,7 +144,7 @@ const HomeView = () => (
                         <PsychologyIcon color="action" sx={{ mr: 2 }} />
                         <Box>
                             <Typography fontWeight="bold">Advanced AI Roleplaying</Typography>
-                            <Typography variant="body2" color="text.secondary">Create custom characters with unique personalities using webhooks, or instantly import them from V2 Character Cards.</Typ[...]
+                            <Typography variant="body2" color="text.secondary">Create custom characters with unique personalities using webhooks, or instantly import them from V2 Character Cards.</Typography>
                         </Box>
                     </Box>
                     <Divider />
@@ -152,7 +152,7 @@ const HomeView = () => (
                         <BrushIcon color="action" sx={{ mr: 2 }} />
                         <Box>
                             <Typography fontWeight="bold">Image Generation & Editing</Typography>
-                            <Typography variant="body2" color="text.secondary">Use the <code style={{fontFamily: 'monospace'}}> /edit_or_generate_image</code> command to create new images from a promp[...]
+                            <Typography variant="body2" color="text.secondary">Use the <code style={{fontFamily: 'monospace'}}> /edit_or_generate_image</code> command to create new images from a prompt or edit existing ones with AI assistance.</Typography>
                         </Box>
                     </Box>
                      <Divider />
@@ -160,7 +160,7 @@ const HomeView = () => (
                         <PermMediaIcon color="action" sx={{ mr: 2 }} />
                         <Box>
                             <Typography fontWeight="bold">Multi-Modal Understanding</Typography>
-                            <Typography variant="body2" color="text.secondary">Mana Nagase can analyze the content of images, extract audio from videos, and understand context from web links.</Typogra[...]
+                            <Typography variant="body2" color="text.secondary">Mana Nagase can analyze the content of images, extract audio from videos, and understand context from web links.</Typography>
                         </Box>
                     </Box>
                      <Divider />
@@ -168,7 +168,7 @@ const HomeView = () => (
                         <TuneIcon color="action" sx={{ mr: 2 }} />
                         <Box>
                             <Typography fontWeight="bold">Full User Control</Typography>
-                            <Typography variant="body2" color="text.secondary">Bring your own API key, switch between different AI models on the fly, and manage your data with comprehensive reset and [...]
+                            <Typography variant="body2" color="text.secondary">Bring your own API key, switch between different AI models on the fly, and manage your data with comprehensive reset and removal commands.</Typography>
                         </Box>
                     </Box>
                 </Stack>
@@ -182,7 +182,7 @@ const HomeView = () => (
             />
             <CardContent>
                 <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-                    Ready to bring Mana Nagase to your server? The bot is open-source and designed for self-hosting, giving you maximum privacy and control. Head over to the GitHub repository to get t[...]
+                    Ready to bring Mana Nagase to your server? The bot is open-source and designed for self-hosting, giving you maximum privacy and control. Head over to the GitHub repository to get the code and follow the setup instructions in the "Guide" tab.
                 </Typography>
                 <Stack direction="row" spacing={1}>
                      <Button variant="contained" startIcon={<GitHubIcon />} href="https://github.com/War004/Google-gemini-discord-bot" target="_blank" rel="noopener">
@@ -202,7 +202,6 @@ const HomeView = () => (
                     <Alert severity="warning" variant="standard">
                         <Typography fontWeight="bold">📢 Extended Downtime Notice</Typography>
 
-                        {/* --- UPDATED DATE & CONTENT --- */}
                         <Typography variant="caption" color="text.secondary" sx={{ mb: 1, display: 'block' }}>
                             Posted on: September 8, 2025
                         </Typography>
@@ -218,26 +217,27 @@ const HomeView = () => (
                             <p>
                                 If you would like consistent access, you are encouraged to <strong>self-host</strong> your own instance. The process is documented and fully supported.
                             </p>
+                            {/* --- THIS IS THE MODIFIED SECTION --- */}
                             <Stack spacing={0.5} sx={{ my: 2, pl: '20px' }}>
-                                <Typography>
+                                <Typography sx={{ '& a': { color: (theme) => (theme.palette.mode === 'dark' ? 'white' : 'black'), transition: 'color 0.3s' } }}>
                                     <strong>Support Site:</strong>{' '}
                                     <a href="https://war004.github.io/google-gemini-discord-bot-support-site/" target="_blank" rel="noopener noreferrer">
                                         war004.github.io/...
                                     </a>
                                 </Typography>
-                                <Typography>
+                                <Typography sx={{ '& a': { color: (theme) => (theme.palette.mode === 'dark' ? 'white' : 'black'), transition: 'color 0.3s' } }}>
                                     <strong>GitHub Repo:</strong>{' '}
                                     <a href="https://github.com/War004/Google-gemini-discord-bot" target="_blank" rel="noopener noreferrer">
                                         github.com/War004/Google-gemini-discord-bot
                                     </a>
                                 </Typography>
                             </Stack>
+                            {/* -------------------------------------- */}
                             <p>
                                 Thank you for your understanding. Feel free to fork, self-host, and improve the project—your contributions and continued interest mean a lot.
                             </p>
                             <p style={{ fontStyle: 'italic' }}>— Developer</p>
                         </Typography>
-                        {/* -------------------------------- */}
                     </Alert>
                 </Stack>
             </CardContent>
@@ -257,25 +257,25 @@ const CommandsView = () => {
         {
             name: "/check_token_usage",
             description: "Check the token usage for a bot or webhook.",
-            purpose: "This command calculates and displays the current token count for a selected bot or a character webhook. Tokens are consumed by the AI model with every message and are reset perio[...]
+            purpose: "This command calculates and displays the current token count for a selected bot or a character webhook. Tokens are consumed by the AI model with every message and are reset periodically. This tool helps you monitor usage to stay within the model's context limit (1,048,576 tokens).",
             parameters: [
-                { name: "Bot/Webhook", type: "Dropdown Choice", required: true, description: "After running the command, you will be prompted to select which bot or character you want to check from a [...]
+                { name: "Bot/Webhook", type: "Dropdown Choice", required: true, description: "After running the command, you will be prompted to select which bot or character you want to check from a dropdown menu." }
             ]
         },
         {
             name: "/info",
             description: "Displays technical information about the bot.",
-            purpose: "Provides real-time diagnostic information, including the bot's current response latency (ping) and the specific AI model that is active in the current channel. It also attaches t[...]
+            purpose: "Provides real-time diagnostic information, including the bot's current response latency (ping) and the specific AI model that is active in the current channel. It also attaches the bot's core system instructions as a downloadable text file for transparency.",
             parameters: []
         },
         {
             name: "/add_webhook",
             description: "Adds a new character webhook to the channel.",
-            purpose: "This command creates a new, independent character (as a webhook) in the channel. You must provide a name and a set of system instructions that define its personality and behavior[...]
+            purpose: "This command creates a new, independent character (as a webhook) in the channel. You must provide a name and a set of system instructions that define its personality and behavior. You can also give it a custom avatar.",
             parameters: [
                 { name: "name", type: "Text", required: true, description: "The name that the character will use." },
                 { name: "avatar", type: "Image File", required: false, description: "An optional custom avatar (PNG, JPG, or WEBP) for the character." },
-                { name: "plain_text_instructions", type: "Text", required: true, description: "The system prompt that defines the character's personality. (Use this OR the file upload).", group: "inst[...]
+                { name: "plain_text_instructions", type: "Text", required: true, description: "The system prompt that defines the character's personality. (Use this OR the file upload).", group: "instructions" },
                 { name: "text_file_instructions", type: "Text File", required: true, description: "Upload a .txt file containing the system prompt. (Use this OR plain text).", group: "instructions" }
             ]
         },
@@ -290,15 +290,15 @@ const CommandsView = () => {
         {
             name: "/reset_chat_history",
             description: "Resets the chat history for a bot or webhook.",
-            purpose: "Wipes the conversational memory for a selected entity. This is useful for starting a fresh conversation or if the AI's context has become confused. You can choose to reset either[...]
+            purpose: "Wipes the conversational memory for a selected entity. This is useful for starting a fresh conversation or if the AI's context has become confused. You can choose to reset either the regular text chat history or the image generation history.",
             parameters: [
-                { name: "History to Reset", type: "Dropdown Choice", required: true, description: "Select from a dropdown which bot/webhook and which type of history (Regular or Image) you want to cle[...]
+                { name: "History to Reset", type: "Dropdown Choice", required: true, description: "Select from a dropdown which bot/webhook and which type of history (Regular or Image) you want to clear." }
             ]
         },
         {
             name: "/add_v2_card_characters",
             description: "Adds a character using a V2 Character Card (PNG).",
-            purpose: "Imports a character directly from a standard V2 Character Card. The bot reads the metadata embedded in the PNG file to automatically set the character's name, personality, greeti[...]
+            purpose: "Imports a character directly from a standard V2 Character Card. The bot reads the metadata embedded in the PNG file to automatically set the character's name, personality, greeting, and avatar.",
             parameters: [
                 { name: "image", type: "Image File (.png)", required: true, description: "The V2 Character Card PNG file." },
                 { name: "additional_image", type: "Image File", required: false, description: "An optional 'persona' image the AI can use to understand the user's appearance during roleplay." }
@@ -307,7 +307,7 @@ const CommandsView = () => {
         {
             name: "/edit_or_generate_image",
             description: "Generate or edit images using Gemini Vision.",
-            purpose: "A powerful multi-modal command. If you only provide a prompt, it generates a new image. If you provide both a prompt and an image, it uses the prompt to edit the provided image."[...]
+            purpose: "A powerful multi-modal command. If you only provide a prompt, it generates a new image. If you provide both a prompt and an image, it uses the prompt to edit the provided image.",
             parameters: [
                 { name: "prompt", type: "Text", required: true, description: "The creative instructions for generating or editing the image." },
                 { name: "image", type: "Image File", required: false, description: "An optional image to be edited or used as context for the generation." }
@@ -316,9 +316,9 @@ const CommandsView = () => {
         {
             name: "/change_model",
             description: "Change the AI model for the current channel.",
-            purpose: "Swaps the underlying AI model that powers the bot's responses in this channel. Different models have different capabilities, context limits, and potential restrictions. This allo[...]
+            purpose: "Swaps the underlying AI model that powers the bot's responses in this channel. Different models have different capabilities, context limits, and potential restrictions. This allows for fine-tuning the bot's performance.",
             parameters: [
-                { name: "model_names", type: "Choice", required: true, description: "Select the desired AI model from a predefined list.", choices: ["Gemini 2.5 flash thinking v2", "Gemini 2.5 flash",[...]
+                { name: "model_names", type: "Choice", required: true, description: "Select the desired AI model from a predefined list.", choices: ["Gemini 2.5 flash thinking v2", "Gemini 2.5 flash", "Gemini 2.0 flash", "Gemini 1.5 flash (stable)", "and more..."] }
             ]
         },
         {
@@ -326,7 +326,7 @@ const CommandsView = () => {
             description: "Set the response language for the bot.",
             purpose: "Configures the language the bot will use for its interface text and responses in the current channel. This setting is saved per-channel.",
             parameters: [
-                { name: "language", type: "Choice", required: true, description: "Select the desired language from a list.", choices: ["English", "हिन्दी", "日本語", "Français", "Ру�[...]
+                { name: "language", type: "Choice", required: true, description: "Select the desired language from a list.", choices: ["English", "हिन्दी", "日本語", "Français", "Русский", "and more..."] }
             ]
         },
         {
@@ -464,7 +464,7 @@ const OfflineHostingView = () => {
             description: () => (
                 <Stack spacing={2}>
                     <Typography>
-                        You will find a file named <CodeSpan>.env</CodeSpan>. Open it in a text editor and add your values for the <CodeSpan>GOOGLE_API_KEY</CodeSpan> and <CodeSpan>DISCORD_TOKEN</Code[...]
+                        You will find a file named <CodeSpan>.env</CodeSpan>. Open it in a text editor and add your values for the <CodeSpan>GOOGLE_API_KEY</CodeSpan> and <CodeSpan>DISCORD_TOKEN</CodeSpan>.
                     </Typography>
                     <Alert severity="info" variant="outlined" icon={false}>
                         <strong>Optional:</strong> If you don't add your application ID, the bot will attempt to get it automatically.
@@ -473,14 +473,14 @@ const OfflineHostingView = () => {
                         <strong>Important:</strong> Do not use single or double quotes around your keys.
                     </Alert>
                     <CodeBlock>
-                        {`# Example .env file content\nGOOGLE_API_KEY=your_google_api_key_goes_here\nDISCORD_TOKEN=your_discord_bot_token_goes_here\n\n# Optional\nAPPLICATION_ID=your_application_id_go[...]
+                        {`# Example .env file content\nGOOGLE_API_KEY=your_google_api_key_goes_here\nDISCORD_TOKEN=your_discord_bot_token_goes_here\n\n# Optional\nAPPLICATION_ID=your_application_id_goes_here`}
                     </CodeBlock>
                 </Stack>
             )
         },
         {
             label: 'Set Up the Terminal',
-            description: `Open a terminal or command prompt directly in the project folder. Make sure you have a recent version of Python installed on your system and that PIP (Python's package instal[...]
+            description: `Open a terminal or command prompt directly in the project folder. Make sure you have a recent version of Python installed on your system and that PIP (Python's package installer) is available in your terminal.`
         },
         {
             label: 'Create and Activate Virtual Environment',
@@ -497,7 +497,7 @@ const OfflineHostingView = () => {
             label: 'Install Dependencies',
             description: () => (
                  <Stack spacing={1}>
-                    <Typography>With your virtual environment active, run the following command to install all the required packages listed in the <CodeSpan>requirmentsWindows.txt</CodeSpan> or <CodeS[...]
+                    <Typography>With your virtual environment active, run the following command to install all the required packages listed in the <CodeSpan>requirmentsWindows.txt</CodeSpan> or <CodeSpan>requirmentsLinux.txt</CodeSpan> based on your os.</Typography>
                     <CodeBlock>pip install -r requirmentsWindows.txt</CodeBlock>
                  </Stack>
             )
@@ -568,7 +568,7 @@ const PrivacyPolicyView = () => {
             <Stack spacing={3}>
                 <PolicySection title="Introduction" icon={<ArticleIcon />}>
                     <Typography variant="body1" color="text.secondary">
-                        Welcome to Google-gemini-discord-bot. This policy explains what data we collect, why we collect it, and how it is stored and used. Your privacy and data security are our top pr[...]
+                        Welcome to Google-gemini-discord-bot. This policy explains what data we collect, why we collect it, and how it is stored and used. Your privacy and data security are our top priorities. This website is purely informational and does not collect any personal data. This policy primarily concerns the data handled by the Discord bot.
                     </Typography>
                 </PolicySection>
 
@@ -576,24 +576,24 @@ const PrivacyPolicyView = () => {
                     <Typography variant="body1" color="text.secondary" component="div">
                         To function correctly, the bot collects several types of data:
                         <ul>
-                            <li><strong>Discord Identifiers:</strong> Your Discord User ID, username, and server/channel IDs are used to manage conversations and store data in separate, organized fold[...]
-                            <li><strong>Message Content:</strong> When you interact with the bot, the content of your messages is processed and saved in chat history files (<CodeSpan>chat_history.pkl<[...]
-                            <li><strong>User-Provided API Keys:</strong> If you use the <CodeSpan>/set_api_key</CodeSpan> command, your key is stored in an <CodeSpan>api_keys.json</CodeSpan> file to a[...]
-                            <li><strong>Uploaded Files:</strong> The bot temporarily downloads and stores files (images, videos, etc.) you upload to process them for features like image analysis or ch[...]
-                            <li><strong>Language Preferences:</strong> Your language choice via the <CodeSpan>/set_language</CodeSpan> command is saved in the <CodeSpan>api_keys.json</CodeSpan> file.<[...]
+                            <li><strong>Discord Identifiers:</strong> Your Discord User ID, username, and server/channel IDs are used to manage conversations and store data in separate, organized folders.</li>
+                            <li><strong>Message Content:</strong> When you interact with the bot, the content of your messages is processed and saved in chat history files (<CodeSpan>chat_history.pkl</CodeSpan>) to maintain context.</li>
+                            <li><strong>User-Provided API Keys:</strong> If you use the <CodeSpan>/set_api_key</CodeSpan> command, your key is stored in an <CodeSpan>api_keys.json</CodeSpan> file to authenticate with Google's services on your behalf.</li>
+                            <li><strong>Uploaded Files:</strong> The bot temporarily downloads and stores files (images, videos, etc.) you upload to process them for features like image analysis or character creation. These are kept in an <CodeSpan>attachments</CodeSpan> folder.</li>
+                            <li><strong>Language Preferences:</strong> Your language choice via the <CodeSpan>/set_language</CodeSpan> command is saved in the <CodeSpan>api_keys.json</CodeSpan> file.</li>
                         </ul>
                     </Typography>
                 </PolicySection>
 
                 <PolicySection title="How We Use Your Data" icon={<SettingsIcon />}>
                      <Typography variant="body1" color="text.secondary">
-                        Your data is used exclusively to provide and improve the bot's services: to generate AI responses, maintain conversation context, and fulfill specific command requests. We do n[...]
+                        Your data is used exclusively to provide and improve the bot's services: to generate AI responses, maintain conversation context, and fulfill specific command requests. We do not sell or share your data with any other third parties for marketing or other purposes.
                     </Typography>
                 </PolicySection>
 
                 <PolicySection title="Third-Party Services: Google Gemini" icon={<SmartToyIcon />}>
                     <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-                        The bot's core functionality is powered by the Google Gemini API. To generate responses, we must send your message prompts and relevant chat history to Google. We encourage you[...]
+                        The bot's core functionality is powered by the Google Gemini API. To generate responses, we must send your message prompts and relevant chat history to Google. We encourage you to review Google's own policies to understand how they handle data.
                     </Typography>
                     <Stack direction="row" spacing={1}>
                         <Button variant="outlined" href="https://ai.google.dev/terms" target="_blank" rel="noopener">
@@ -604,7 +604,7 @@ const PrivacyPolicyView = () => {
                 
                 <PolicySection title="Data Control & Retention" icon={<CategoryIcon />}>
                      <Typography variant="body1" color="text.secondary" component="div">
-                        You have direct control over your data via several commands (<CodeSpan>/reset_chat_history</CodeSpan>, <CodeSpan>/remove_webhook</CodeSpan>) which permanently delete associated[...]
+                        You have direct control over your data via several commands (<CodeSpan>/reset_chat_history</CodeSpan>, <CodeSpan>/remove_webhook</CodeSpan>) which permanently delete associated data from the host server.
                         <br/><br/>
                         Media files uploaded to the bot are automatically purged after 48 hours to manage storage and protect your privacy.
                     </Typography>
@@ -618,14 +618,14 @@ const PrivacyPolicyView = () => {
                          <Button variant="contained" startIcon={<GitHubIcon />} href="https://github.com/War004/Google-gemini-discord-bot" target="_blank" rel="noopener">
                             GitHub
                         </Button>
-                        <Button variant="contained" startIcon={<RssFeedIcon />} href="https://x.com/itesh_ar0" target="_blank" rel="noopener" sx={{backgroundColor: '#1DA1F2', '&:hover': {backgroundCol[...]
+                        <Button variant="contained" startIcon={<RssFeedIcon />} href="https://x.com/itesh_ar0" target="_blank" rel="noopener" sx={{backgroundColor: '#1DA1F2', '&:hover': {backgroundColor: '#0c85d0'}}}>
                             Twitter / X
                         </Button>
                     </Stack>
                 </PolicySection>
 
                  <Alert severity="info" variant="standard">
-                    <strong>Disclaimer:</strong> This Privacy Policy is a template provided for informational purposes only and does not constitute legal advice. For self-hosted instances, you are res[...]
+                    <strong>Disclaimer:</strong> This Privacy Policy is a template provided for informational purposes only and does not constitute legal advice. For self-hosted instances, you are responsible for your own data security.
                 </Alert>
             </Stack>
         </ViewContainer>
@@ -661,7 +661,7 @@ const DataPrivacyView = () => {
             <Stack spacing={3}>
                 <Section title="Data Segregation and Storage" icon={<DatasetIcon />}>
                     <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-                        Your data is never mixed with data from other channels. The bot creates a specific folder structure on the host's local file system to ensure strict separation, as defined in t[...]
+                        Your data is never mixed with data from other channels. The bot creates a specific folder structure on the host's local file system to ensure strict separation, as defined in the <CodeSpan>get_channel_directory()</CodeSpan> and <CodeSpan>get_bot_paths()</CodeSpan> functions.
                     </Typography>
                     <Paper variant="outlined" sx={{ p: 2, backgroundColor: theme => theme.palette.mode === 'dark' ? grey[900] : grey[100] }}>
                         <Typography component="div" variant="body2" fontFamily="monospace">
@@ -689,13 +689,13 @@ const DataPrivacyView = () => {
                         </Step>
                          <Step expanded>
                             <StepLabel>Step 2: Rename</StepLabel>
-                            <StepContent><Typography color="text.secondary">The file is immediately saved and renamed to a generic, non-unique filename, such as <CodeSpan>temp_file.png</CodeSpan>.</Ty[...]
+                            <StepContent><Typography color="text.secondary">The file is immediately saved and renamed to a generic, non-unique filename, such as <CodeSpan>temp_file.png</CodeSpan>.</Typography></StepContent>
                         </Step>
                          <Step expanded>
                             <StepLabel>Step 3: Overwrite</StepLabel>
                             <StepContent>
                                 <Alert severity="warning" variant="outlined">
-                                    This renaming process is a critical privacy feature. When you upload a new file, it replaces and overwrites the previous temporary file. Only the most recently uplo[...]
+                                    This renaming process is a critical privacy feature. When you upload a new file, it replaces and overwrites the previous temporary file. Only the most recently uploaded file is ever stored on the disk, making your past uploads inaccessible to the bot or its operator.
                                 </Alert>
                             </StepContent>
                         </Step>
@@ -707,8 +707,8 @@ const DataPrivacyView = () => {
                         You have both automated and manual control over your data's lifecycle.
                     </Typography>
                      <ul style={{ paddingLeft: '20px', margin: 0 }}>
-                        <li><Typography color="text.secondary"><strong>Automated Purging:</strong> The <CodeSpan>check_expired_files()</CodeSpan> function automatically scans for media file links in t[...]
-                        <li><Typography color="text.secondary"><strong>Manual Deletion:</strong> You can permanently delete data at any time using commands like <CodeSpan>/reset_chat_history</CodeSpan[...]
+                        <li><Typography color="text.secondary"><strong>Automated Purging:</strong> The <CodeSpan>check_expired_files()</CodeSpan> function automatically scans for media file links in the chat history. Any links older than 48 hours are removed from the bot's memory to prevent long-term access.</Typography></li>
+                        <li><Typography color="text.secondary"><strong>Manual Deletion:</strong> You can permanently delete data at any time using commands like <CodeSpan>/reset_chat_history</CodeSpan> and <CodeSpan>/remove_webhook</CodeSpan>, which delete the corresponding <CodeSpan>.pkl</CodeSpan> and <CodeSpan>.json</CodeSpan> files from the server.</Typography></li>
                     </ul>
                 </Section>
                 
@@ -717,7 +717,7 @@ const DataPrivacyView = () => {
                         To generate responses, the bot sends your prompts, relevant chat history, and any uploaded media data to the Google Gemini API. Google's data handling policies apply.
                     </Typography>
                      <ul style={{ paddingLeft: '20px', margin: '0 0 16px 0' }}>
-                        <li><Typography color="text.secondary"><strong>Data for Review:</strong> For abuse monitoring, Google may review API content. According to their policy, this data is disconnect[...]
+                        <li><Typography color="text.secondary"><strong>Data for Review:</strong> For abuse monitoring, Google may review API content. According to their policy, this data is disconnected from your personal Google account to protect privacy.</Typography></li>
                         <li><Typography color="text.secondary"><strong>Data Caching:</strong> Google may cache inputs and outputs for up to 24 hours to improve performance.</Typography></li>
                     </ul>
                     <Typography variant="body2" color="text.secondary">
@@ -767,7 +767,7 @@ const GuideView = () => {
                         By using this bot, you agree to the following terms:
                         <ul style={{ paddingLeft: '20px', marginTop: '10px' }}>
                             <li>Harmful or NSFW content should only be generated in channels marked as age-restricted by Discord.</li>
-                            <li><strong>Zero Tolerance Policy:</strong> Any content involving the deception or harm of children is strictly prohibited. Generating such content will result in an immedi[...]
+                            <li><strong>Zero Tolerance Policy:</strong> Any content involving the deception or harm of children is strictly prohibited. Generating such content will result in an immediate and permanent ban from all bot services.</li>
                             <li>Your use of the bot must also comply with the Terms of Service of both Discord and Google.</li>
                         </ul>
                     </Typography>
@@ -783,7 +783,7 @@ const GuideView = () => {
                     <Alert severity="info" sx={{ mt: 2 }}>
                         <Typography fontWeight="bold">Note for Self-Hosted Instances</Typography>
                         <Typography variant="body2" sx={{ mt: 0.5 }}>
-                            Users who host this bot on their own servers are responsible for its use and are encouraged to establish their own Terms and Conditions. The original developer is not liabl[...]
+                            Users who host this bot on their own servers are responsible for its use and are encouraged to establish their own Terms and Conditions. The original developer is not liable for any content generated by self-hosted instances of the bot.
                         </Typography>
                     </Alert>
 
@@ -799,7 +799,7 @@ const GuideView = () => {
                                 Step 1: Set Your API Key (Required)
                             </StepLabel>
                             <StepContent>
-                                <Typography color="text.secondary">The bot cannot function without a Google API key. Use the <CodeSpan>/set_api_key</CodeSpan> command and provide your key. This is sto[...]
+                                <Typography color="text.secondary">The bot cannot function without a Google API key. Use the <CodeSpan>/set_api_key</CodeSpan> command and provide your key. This is stored securely on a per-channel basis.</Typography>
                             </StepContent>
                         </Step>
                          <Step expanded>
@@ -807,7 +807,7 @@ const GuideView = () => {
                                 Step 2: Set Language (Optional)
                             </StepLabel>
                             <StepContent>
-                                <Typography color="text.secondary">The bot defaults to English. To change this, use the <CodeSpan>/set_language</CodeSpan> command and choose your preferred language fr[...]
+                                <Typography color="text.secondary">The bot defaults to English. To change this, use the <CodeSpan>/set_language</CodeSpan> command and choose your preferred language from the list.</Typography>
                             </StepContent>
                         </Step>
                          <Step expanded>
@@ -815,7 +815,7 @@ const GuideView = () => {
                                 Step 3: Change AI Model (Optional)
                             </StepLabel>
                             <StepContent>
-                                <Typography color="text.secondary">Different AI models have different strengths. You can switch the model for your channel at any time using the <CodeSpan>/change_model[...]
+                                <Typography color="text.secondary">Different AI models have different strengths. You can switch the model for your channel at any time using the <CodeSpan>/change_model</CodeSpan> command.</Typography>
                             </StepContent>
                         </Step>
                      </Stepper>
@@ -826,11 +826,11 @@ const GuideView = () => {
                         <Typography variant="h6" component="h4" gutterBottom>Tagging vs. Replying</Typography>
                         <Typography variant="body2" color="text.secondary" component="div">
                              <ul>
-                                <li><strong>Tagging (@Mana Nagase):</strong> When you tag the bot, it reads the **last 20 messages** in the channel to understand the full context of the conversation. [...]
-                                <li><strong>Replying:</strong> When you reply directly to one of the bot's messages, it **only sees the content of that specific message**. This is much more efficient [...]
+                                <li><strong>Tagging (@Mana Nagase):</strong> When you tag the bot, it reads the **last 20 messages** in the channel to understand the full context of the conversation. Use this for complex questions that rely on recent chat history.</li>
+                                <li><strong>Replying:</strong> When you reply directly to one of the bot's messages, it **only sees the content of that specific message**. This is much more efficient and should be your default way of interacting.</li>
                             </ul>
                             <Alert severity="info" sx={{ mt: 1 }}>
-                                <strong>Pro-Tip:</strong> Avoid tagging the bot too often, as it can fill up the AI's context window quickly. If you want to start a new conversation without tagging, s[...]
+                                <strong>Pro-Tip:</strong> Avoid tagging the bot too often, as it can fill up the AI's context window quickly. If you want to start a new conversation without tagging, simply use a command like <CodeSpan>/info</CodeSpan> and then **reply** to the bot's response.
                             </Alert>
                         </Typography>
                     </Paper>
@@ -1046,62 +1046,30 @@ export default function App() {
                    {isBottomBarVisible ? <VisibilityOffIcon fontSize="small" /> : <RemoveRedEyeIcon fontSize="small" />}
                 </IconButton>
 
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                        overflow: 'hidden',
-                        visibility: isBottomBarVisible ? 'visible' : 'hidden',
+                <Box sx={{
+                    flexGrow: 1,
+                    overflow: 'hidden',
+                    maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    visibility: isBottomBarVisible ? 'visible' : 'hidden',
+                    transition: 'visibility 0.2s'
+                 }}>
+                    <Box sx={{
                         display: 'flex',
-                        alignItems: 'center',
-                        minHeight: 32
-                    }}
-                >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            gap: 4,
-                            alignItems: 'center',
-                            width: '100%',
-                            animation: 'pulseShift 12s ease-in-out infinite',
-                            '@keyframes pulseShift': {
-                                '0%': { transform: 'translateX(0)' },
-                                '50%': { transform: 'translateX(-4px)' },
-                                '100%': { transform: 'translateX(0)' }
-                            }
-                        }}
-                    >
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{
-                                fontWeight: 500,
-                                letterSpacing: '.3px',
-                                whiteSpace: 'nowrap'
-                            }}
-                        >
+                        width: '200%',
+                        animation: 'marquee 30s linear infinite',
+                        '& p': { whiteSpace: 'nowrap', px: 4 }
+                    }}>
+                        <Typography variant="body2" color="text.secondary">
                             Bot have discountinued, the bot will get updates but it won't be online, please use local host.
                         </Typography>
-                        <Divider
-                            flexItem
-                            orientation="vertical"
-                            sx={{
-                                height: 18,
-                                borderColor: (theme) =>
-                                    theme.palette.mode === 'dark'
-                                        ? 'rgba(255,255,255,0.15)'
-                                        : 'rgba(0,0,0,0.15)'
-                            }}
-                        />
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{
-                                fontWeight: 500,
-                                letterSpacing: '.3px',
-                                whiteSpace: 'nowrap'
-                            }}
-                        >
-                            Important annoument will show here
+                        <Typography variant="body2" color="text.secondary">
+                            Important annoument will show here.
+                        </Typography>
+                         <Typography variant="body2" color="text.secondary">
+                            Bot have discountinued, the bot will get updates but it won't be online, please use local host.
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Important annoument will show here.
                         </Typography>
                     </Box>
                 </Box>

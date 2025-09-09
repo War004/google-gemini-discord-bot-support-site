@@ -14,8 +14,13 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
+  },
+  "overrides": {
+    "nth-check": "2.0.1",
+    "postcss": "8.4.31",
+    "webpack-dev-server": "4.15.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +30,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "eslintConfig": { 
+  "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
