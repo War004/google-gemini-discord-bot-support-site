@@ -217,7 +217,6 @@ const HomeView = () => (
                             <p>
                                 If you would like consistent access, you are encouraged to <strong>self-host</strong> your own instance. The process is documented and fully supported.
                             </p>
-                            {/* --- THIS IS THE MODIFIED SECTION --- */}
                             <Stack spacing={0.5} sx={{ my: 2, pl: '20px' }}>
                                 <Typography sx={{ '& a': { color: (theme) => (theme.palette.mode === 'dark' ? 'white' : 'black'), transition: 'color 0.3s' } }}>
                                     <strong>Support Site:</strong>{' '}
@@ -232,7 +231,6 @@ const HomeView = () => (
                                     </a>
                                 </Typography>
                             </Stack>
-                            {/* -------------------------------------- */}
                             <p>
                                 Thank you for your understanding. Feel free to fork, self-host, and improve the project—your contributions and continued interest mean a lot.
                             </p>
@@ -925,6 +923,37 @@ export default function App() {
         boxShadow: isBottomBarVisible ? theme.shadows[4] : 'none',
     };
 
+    const DisconnectedChip = () => (
+         <Chip
+            variant="outlined"
+            size="small"
+            sx={{
+                pl: 1.25,
+                pr: 1,
+                display: 'flex',
+                alignItems: 'center',
+                fontWeight: 500,
+                borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+                background:
+                    (theme) => theme.palette.mode === 'dark'
+                      ? 'linear-gradient(145deg, rgba(30,41,59,0.6), rgba(30,41,59,0.4))'
+                      : 'linear-gradient(145deg, #ffffff, #f1f5f9)',
+                '& .chip-label': {
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                }
+            }}
+            label={
+                <Box className="chip-label">
+                    <span style={{letterSpacing: '.25px'}}>Disconnected</span>
+                    <LinkOffIcon sx={{ fontSize: 16, opacity: 0.85 }} />
+                </Box>
+            }
+        />
+    );
+
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -933,20 +962,21 @@ export default function App() {
             <AppBar
                 position="fixed"
                 color="inherit"
-                sx={isMobile ? {
+                sx={{
                     backgroundColor: darkMode ? 'rgba(30, 41, 59, 0.8)' : 'rgba(255, 255, 255, 0.8)',
                     backdropFilter: 'blur(12px)',
-                } : {
-                    top: 16,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 'auto',
-                    backgroundColor: darkMode ? 'rgba(30, 41, 59, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-                    backdropFilter: 'blur(12px)',
-                    borderRadius: 50,
+                    // --- MODIFIED SECTION FOR DESKTOP-ONLY STYLES ---
+                    ...(!isMobile && {
+                        top: 16,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 'auto',
+                        borderRadius: 50,
+                    })
                 }}
                 elevation={4}
             >
+                {/* --- MODIFIED TOOLBAR FOR MOBILE LAYOUT --- */}
                 <Toolbar sx={{ minHeight: '48px !important', justifyContent: isMobile ? 'space-between' : 'center' }}>
                     {isMobile && (
                         <IconButton
@@ -960,8 +990,12 @@ export default function App() {
                     )}
                     
                     {isMobile ? (
-                         <Typography variant="h6" component="div">
-                         </Typography>
+                         <>
+                            <DisconnectedChip />
+                             <IconButton href="https://github.com/War004/Google-gemini-discord-bot" target="_blank" rel="noopener" color="inherit">
+                                <GitHubIcon />
+                             </IconButton>
+                         </>
                     ) : (
                         <Tabs
                             value={activeTab}
@@ -981,9 +1015,6 @@ export default function App() {
                             ))}
                         </Tabs>
                     )}
-                    
-                    {isMobile && <Box sx={{ width: 48 }} />} 
-
                 </Toolbar>
             </AppBar>
             <nav>
@@ -1017,6 +1048,7 @@ export default function App() {
                 </Paper>
             </Container>
 
+            {/* --- MODIFIED BOTTOM BAR WITH CONDITIONAL LAYOUTS --- */}
             <Box
                 component={Paper}
                 position="fixed"
@@ -1029,23 +1061,27 @@ export default function App() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 1,
-                    ...bottomBarStyles
+                    ...bottomBarStyles,
+                    ...(isMobile && { justifyContent: 'space-between' })
                 }}
             >
+                {/* GitHub Icon - Desktop Only */}
                 <IconButton 
                     href="https://github.com/War004/Google-gemini-discord-bot" 
                     target="_blank" 
                     rel="noopener" 
                     size="small" 
-                    sx={{flexShrink: 0}}
+                    sx={{flexShrink: 0, display: { xs: 'none', sm: 'inline-flex' } }}
                 >
                     <GitHubIcon fontSize="small"/>
                 </IconButton>
 
+                {/* Visibility Toggle - All Screens */}
                 <IconButton onClick={() => setIsBottomBarVisible(!isBottomBarVisible)} size="small" sx={{flexShrink: 0}}>
                    {isBottomBarVisible ? <VisibilityOffIcon fontSize="small" /> : <RemoveRedEyeIcon fontSize="small" />}
                 </IconButton>
-
+                
+                {/* Marquee - All Screens, with adjusted animation */}
                 <Box sx={{
                     flexGrow: 1,
                     overflow: 'hidden',
@@ -1055,30 +1091,30 @@ export default function App() {
                  }}>
                     <Box sx={{
                         display: 'flex',
-                        width: '200%',
-                        animation: 'marquee 30s linear infinite',
+                        width: '400%', // Increased width for seamless looping
+                        animation: isMobile ? 'marquee 40s linear infinite' : 'marquee 50s linear infinite', // Slower, adjusted speed
                         '& p': { whiteSpace: 'nowrap', px: 4 }
                     }}>
-                        <Typography variant="body2" color="text.secondary">
-                            Bot have discountinued, the bot will get updates but it won't be online, please use local host.
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Important annoument will show here.
-                        </Typography>
-                         <Typography variant="body2" color="text.secondary">
-                            Bot have discountinued, the bot will get updates but it won't be online, please use local host.
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Important annoument will show here.
-                        </Typography>
+                        {/* Repeated content to ensure smooth loop */}
+                        <Typography variant="body2" color="text.secondary">Bot has been discontinued, it will get updates but won't be online, please self-host.</Typography>
+                        <Typography variant="body2" color="text.secondary">Important announcements will show here.</Typography>
+                        <Typography variant="body2" color="text.secondary">Bot has been discontinued, it will get updates but won't be online, please self-host.</Typography>
+                        <Typography variant="body2" color="text.secondary">Important announcements will show here.</Typography>
+                        <Typography variant="body2" color="text.secondary">Bot has been discontinued, it will get updates but won't be online, please self-host.</Typography>
+                        <Typography variant="body2" color="text.secondary">Important announcements will show here.</Typography>
+                        <Typography variant="body2" color="text.secondary">Bot has been discontinued, it will get updates but won't be online, please self-host.</Typography>
+                        <Typography variant="body2" color="text.secondary">Important announcements will show here.</Typography>
                     </Box>
                 </Box>
                 
+                {/* Right-side items container */}
                  <Box sx={{flexShrink: 0, display: 'flex', alignItems: 'center', gap: 1}}>
+                    {/* Dark Mode Toggle - All Screens */}
                     <IconButton sx={{ ml: 1 }} onClick={() => setDarkMode(!darkMode)} color="inherit" size="small">
                       {darkMode ? <Brightness7Icon fontSize="small" /> : <Brightness4Icon fontSize="small" />}
                     </IconButton>
 
+                    {/* Invite Button - Desktop Only */}
                     <Button 
                         href="https://discord.com/oauth2/authorize?client_id=1228578114582482955&permissions=1689934876900416&integration_type=0&scope=bot"
                         target="_blank"
@@ -1091,33 +1127,10 @@ export default function App() {
                         Invite
                     </Button>
 
-                     <Chip
-                        variant="outlined"
-                        size="small"
-                        sx={{
-                            pl: 1.25,
-                            pr: 1,
-                            display: 'flex',
-                            alignItems: 'center',
-                            fontWeight: 500,
-                            borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
-                            background:
-                                (theme) => theme.palette.mode === 'dark'
-                                  ? 'linear-gradient(145deg, rgba(30,41,59,0.6), rgba(30,41,59,0.4))'
-                                  : 'linear-gradient(145deg, #ffffff, #f1f5f9)',
-                            '& .chip-label': {
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '4px'
-                            }
-                        }}
-                        label={
-                            <Box className="chip-label">
-                                <span style={{letterSpacing: '.25px'}}>Disconnected</span>
-                                <LinkOffIcon sx={{ fontSize: 16, opacity: 0.85 }} />
-                            </Box>
-                        }
-                    />
+                    {/* Disconnected Chip - Desktop Only */}
+                    <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                        <DisconnectedChip />
+                    </Box>
                  </Box>
 
             </Box>
